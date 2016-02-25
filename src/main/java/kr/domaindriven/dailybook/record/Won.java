@@ -6,7 +6,7 @@ import java.util.Locale;
 
 /**
  * <p>
- *     대한민국 화폐로 금액을 표현하기 위한 클래스
+ * 대한민국 화폐로 금액을 표현하기 위한 클래스
  * </p>
  *
  * @author Younghoe Ahn
@@ -19,9 +19,17 @@ public class Won {
 
     private BigDecimal amount;
 
+    //문자열 숫자열을 구분함.
+    public Won(String amount) {
+        String cha = amount.replaceAll("[^-]", "");
+        String num = amount.replaceAll("[^0-9]", "");
+        this.amount = new BigDecimal(cha + num);
+    }
+
     public Won(int amount) {
         this.amount = new BigDecimal(amount);
     }
+
     public Won(BigDecimal amount) {
         this.amount = amount;
     }
@@ -36,6 +44,7 @@ public class Won {
 
     /**
      * 데이터베이스에 문자열로 저장할 형식으로 출력
+     *
      * @return
      */
     @Override
