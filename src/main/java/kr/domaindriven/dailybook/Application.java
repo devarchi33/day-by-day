@@ -1,9 +1,11 @@
 package kr.domaindriven.dailybook;
 
+import kr.domaindriven.dailybook.record.jpa.StringToWon;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
@@ -28,6 +30,9 @@ public class Application {
         System.setProperty("spring.jpa.show-sql", "true");
         System.setProperty("spring.jpa.hibernate.ddl-auto", "validate");
         ApplicationContext context = SpringApplication.run(Application.class, args);
+        //StringToWon 컨버터 등록
+        DefaultFormattingConversionService defaultFormattingConversionService = (DefaultFormattingConversionService) context.getBean("mvcConversionService");
+        defaultFormattingConversionService.addConverter(new StringToWon());
     }
 
     /**
