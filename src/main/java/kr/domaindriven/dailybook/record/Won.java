@@ -22,6 +22,9 @@ public class Won {
     public Won(int amount) {
         this.amount = new BigDecimal(amount);
     }
+    public Won(BigDecimal amount) {
+        this.amount = amount;
+    }
 
     public BigDecimal toBigDecimal() {
         return amount;
