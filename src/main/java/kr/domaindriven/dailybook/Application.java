@@ -1,6 +1,7 @@
 package kr.domaindriven.dailybook;
 
-import kr.domaindriven.dailybook.record.jpa.StringToWon;
+import kr.domaindriven.dailybook.record.conversion.StringToWon;
+import kr.domaindriven.dailybook.record.template.dialect.WonDialect;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -42,6 +43,15 @@ public class Application {
     @Bean
     public Java8TimeDialect java8TimeDialect() {
         return new Java8TimeDialect();
+    }
+
+    /**
+     * <p>{@link kr.domaindriven.dailybook.record.template.dialect.WonDialect} 사용을 위해 등록</p>
+     * @return
+     */
+    @Bean
+    public WonDialect wonDialect() {
+        return new WonDialect();
     }
 
 

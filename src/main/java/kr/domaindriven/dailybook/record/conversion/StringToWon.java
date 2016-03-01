@@ -1,4 +1,4 @@
-package kr.domaindriven.dailybook.record.jpa;
+package kr.domaindriven.dailybook.record.conversion;
 
 import kr.domaindriven.dailybook.record.Won;
 import org.springframework.core.convert.converter.Converter;

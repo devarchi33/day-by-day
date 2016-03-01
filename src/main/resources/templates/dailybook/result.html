@@ -8,11 +8,11 @@
 <h1>Result</h1>
 <p th:text="'data: ' + ${record.date}" />
 <p th:text="'revenueOrExpense: ' + ${record.revenueOrExpense}" />
-<p th:text="'amount: ' + ${#strings.prepend(#numbers.formatInteger(record.getAmount().getAmount(),3,'COMMA'),record.getAmount().getSymbol())}" />
-<p th:text="'balance: ' + ${#strings.prepend(#numbers.formatInteger(record.getBalance().getAmount(),3,'COMMA'),record.getBalance().getSymbol())}" />
+<p th:text="'amount: ' + ${#wonDialect.getWon(record.getAmount())}" />
+<p th:text="'balance: ' + ${#wonDialect.getWon(record.getAmount())}" />
 <p th:text="'summary: ' + ${record.summary}" />
 <p th:text="'category: ' + ${record.category}" />
 <a href="/dailybook/add">Submit another message</a>
-<a href="/list">Go to List</a>
+<a href="/dailybook/list">Go to List</a>
 </body>
 </html>
