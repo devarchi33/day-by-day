@@ -4,10 +4,7 @@ import kr.domaindriven.dailybook.record.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -145,5 +142,19 @@ public class DailyBookPageController {
         recordRepository.save(record);
         System.out.println(record);
         return APP_DIR +"result";
+    }
+
+    /**
+     * 강제로 Exception을 만들어 테스트 하기 위한 컨트롤러 --- 향후 제거.
+     * op2를 0으로 나누게 되면 java.lang.ArithmeticException 이 발생하게 됨.
+     * @param model
+     * @param op1
+     * @param op2
+     * @return
+     */
+    @RequestMapping(value = "ex")
+    public String test(Model model, @RequestParam int op1, @RequestParam int op2) {
+        model.addAttribute("result", op1/op2);
+        return APP_DIR + "test";
     }
 }
